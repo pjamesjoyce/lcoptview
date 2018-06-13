@@ -1,0 +1,10 @@
+.project
+*.pyc
+*.pyo
+*~
+*.ipynb
+.ipynb_checkpoints
+__pycache__
+build/
+dist/
+lcoptview.egg-info/

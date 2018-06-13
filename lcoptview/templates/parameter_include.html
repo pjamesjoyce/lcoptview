@@ -1,0 +1,57 @@
+{% set colspan =  (args.ps_names | length) + 3 %}
+
+
+
+<div class="container">
+  <h1>Parameter Sets</h1>
+  
+  <div id="table">
+    <table id="myTable" class="table table-bordered table-condensed table-hover">
+      <thead>
+	      <tr class ="table_header">
+	        <th class='hide_text_header'>id</th>
+	        <th>Name</th>
+	        <th>Unit</th>
+	        {% for n in args.ps_names %}<th class="ps_name">{{n}}</th>{% endfor %}
+	        
+	      </tr>
+	    </thead>
+      {% for section in args.sorted_parameters %}
+      <thead>
+	      <tr>
+	      	<td class = "table_section" colspan="{{colspan}}">{{section.name}}</td>
+	      </tr>
+      </thead>
+      {% for subsection in section.my_items %}
+      <thead>
+      <tr>
+      	<td class = "table_subsection" colspan="{{colspan}}">{{subsection.name | capitalize}}</td>
+      </tr>
+      </thead>
+      <tbody>
+      {% for item in subsection.my_items %}
+      {% set row_type =  'function' if item.isFunction else 'data' %}
+      <tr class="{{row_type}}_row">
+      
+        <td class='hide_text'>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.unit}}</td>
+
+        {% for v in item.existing_values %}
+          {% if item.isFunction%}
+            <td class="function right_align">{{v}}</td>
+          {% else %}
+            <td class="right_align">{{'%0.4g'| format(v|float)}}</td>
+          {% endif %}
+          
+        {% endfor %}
+        
+      </tr>
+      {% endfor %}
+      </tbody>
+      {% endfor %}
+      {% endfor %}
+    </table>
+  </div>
+  
+</div>

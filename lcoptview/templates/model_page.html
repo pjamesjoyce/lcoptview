@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+
+{% block title %}VIEW Model{% endblock %}
+
+{% block head_postload %}
+    
+<link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = 'css/lv_sandbox.css') }}" />
+
+<script src="{{ url_for('static', filename = 'js/cdn_cache/d3.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/cdn_cache/d3-legend.min.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/cdn_cache/d3-tip.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/cdn_cache/d3-textwrap.JJ.js') }}"></script>
+
+<!--<script src="{{ url_for('static', filename = 'js/analysis.js') }}"></script>-->
+
+<script src="{{ url_for('static', filename = 'js/pie2.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/comparison_bar.js') }}"></script>
+
+<script src = "{{ url_for('static', filename = 'js/result_table.js') }}"></script>
+<script src = "{{ url_for('static', filename = 'js/treetest2.js') }}"></script>
+<script src = "{{ url_for('static', filename = 'js/new_stacked_bar.js') }}"></script>
+<!-- <script src = "{{ url_for('static', filename = 'js/sunburst.js') }}"></script> -->
+<script src = "{{ url_for('static', filename = 'js/export_chart.js') }}"></script>
+<script src = "{{ url_for('static', filename = 'js/hotspot.js') }}"></script>
+
+
+<link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = 'css/lv_analysis.css') }}" />
+
+<link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = 'css/lv_treetest.css') }}" />
+
+<link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = 'css/lv_parameter_table.css') }}" />
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <ul class="nav-colours nav  nav-pills nav-justified top-padding">
+        <li class="active"><a data-toggle="tab" href="#tab-flowchart">Flow Chart</a></li>
+        <li><a data-toggle="tab" href="#tab-params">Parameter Sets</a></li>
+        <li><a data-toggle="tab" href="#tab-results">Results</a></li>
+    </ul>
+</div>
+
+
+<div class = "tab-content">
+    
+    <div class="tab-pane fade in active" id="tab-flowchart">
+        {% include 'sandbox_include.html' %}
+    </div>
+
+    <div class="tab-pane fade in" id="tab-params">
+        {% include 'parameter_include.html' %}
+    </div>
+
+    <div class="tab-pane fade in" id="tab-results">
+        {% include 'analysis_include.html' %}
+    </div>
+
+</div>        
+
+{% endblock %}

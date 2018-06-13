@@ -1,0 +1,81 @@
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+}
+
+.node rect {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 0.25px;
+}
+
+.node .other{
+	stroke:red;
+}
+
+.node .intermediate{
+	stroke:green;
+	fill: lightgreen;
+}
+.node .biosphere{
+	stroke: grey;
+	fill:lightgrey;
+}
+
+.node .input{
+	stroke: steelblue;
+	fill:aliceblue;
+}
+
+.name_label {
+	font-weight: bold; 
+	font:12px sans-serif;
+	text-align: center;
+
+}
+
+.input_label {
+	font-weight: bold; 
+	font:9px sans-serif;
+	text-align: center;
+}
+
+.input_amount{
+	font: 8px sans-serif;
+}
+
+
+.process_amount{
+	font: 10px sans-serif;
+}
+
+/*.node text { font: 10px sans-serif; }
+
+.node--internal text {
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+*/
+.link {
+  fill: none;
+  stroke: red;
+}
+
+.impactFalse{
+	 stroke-dasharray:5,5;
+	 stroke: #ccc;
+}
+
+.foreignDiv{
+	height:100px;
+	width:100px;
+	background-color: red;
+}
+
+.tree_container{
+	width: 100%;
+}
+#simaProTree{
+	margin: auto;
+	display: block;
+}

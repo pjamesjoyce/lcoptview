@@ -1,0 +1,14 @@
+# Include the license file
+include LICENSE.txt
+include README.md
+include lcoptview/app.cfg
+recursive-include lcoptview/templates *
+recursive-include lcoptview/static *
+recursive-include lcoptview/bin *
+
+# Include the data files if there are any
+# recursive-include data *
+
+# If using Python 2.6 or less, then have to include package data, even though
+# it's already declared in setup.py
+# include sample/*.dat

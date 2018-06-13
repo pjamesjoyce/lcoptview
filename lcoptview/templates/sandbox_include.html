@@ -1,0 +1,56 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="sandboxTitle col-xs-12">
+			<h2>Flow sheet for {{args.model.name}}</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="sandbox col-xs-12">
+			<!-- this is where that sandbox application sits -->
+			<div id="sandbox_container"></div>
+		</div>
+	</div>
+</div>
+
+
+<!-- jsPlumb sandbox script -->
+<script src="{{ url_for('static', filename = 'js/lv_sandbox_functions.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/lv_sandbox.js') }}"></script>
+
+<script type="text/javascript">
+
+	jsPlumb.ready(function () {
+
+   // set up variables that need to be passed from template to script
+   var nodes = [];
+
+   {% for node in args.nodes %}
+   console.log("{{node.ext_item_data|safe}}");
+   nodes.push({'name':'{{node.name}}','type':'{{node.type}}','id':'{{node.id}}','initX':{{node.initX}},'initY':{{node.initY}}, 'ext_item_data': "{{node.ext_item_data|safe}}"})
+   {% endfor %}
+
+
+
+    // choices for type are input, output, intermediate
+    // need to consider whether amount is still necessary - could use defaults?...
+    var links = [];
+    var linklabels = {};
+
+    {% for link in args.links %}
+    links.push({'sourceID':'{{link.sourceID}}', 'targetID':'{{link.targetID}}', 'type':'{{link.type}}', 'amount':{{link.amount}}});
+    linklabels['{{link.sourceID}}_{{link.targetID}}'] = '{{link.label}}';
+    {% endfor %}
+
+    var outputlabels = {};
+
+    {% for outputlabel in args.outputlabels %}
+    outputlabels['{{outputlabel.process_id}}'] = '{{outputlabel.output_name}}';
+    {% endfor %}
+
+
+
+    jsPlumbsetup(nodes, links, linklabels, outputlabels);
+
+});
+
+</script>
